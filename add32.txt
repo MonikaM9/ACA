@@ -1,0 +1,19 @@
+AREA RESET, CODE, READONLY
+    ENTRY
+	
+Main
+   LDR R0, =Value1
+   LDR R1, [R0]
+   LDR R0, =Value2
+   LDR R2, [R0]
+   ADD R1,R1,R2
+   LDR R0,=Result
+   LDR R3,[R0]
+   STR R1,[R3]
+   SWI &11
+   
+Value1 DCD &37E3C123
+Value2 DCD &367402AA
+Result DCD &40000000
+			
+			END
