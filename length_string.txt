@@ -1,0 +1,19 @@
+AREA RESET,CODE,READONLY
+	ENTRY
+Main
+	LDR R0,=Data1
+	EOR R1,R1,R1
+loop
+	LDRB R2,[R0],#1
+	CMP R2,#CR
+	BEQ Done
+	ADD R1,R1,#1
+	BAL loop
+Done 
+	LDR R3, CharCount;
+	STR R1,[R3]
+Data1 DCB "MONIKA", CR
+	ALIGN
+CharCount DCD 0x40000000
+CR EQU 0x0D
+	END
